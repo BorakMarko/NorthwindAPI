@@ -35,7 +35,7 @@ namespace NorthwindAPI
             });
             services.AddDbContext<NorthwindContext>(options =>
             {
-                options.UseSqlServer("Server=94.156.189.137;Database=Northwind;User id=sa;Password=HavilPavil21");
+                options.UseSqlServer("Your connection string");
             });
             
         }
