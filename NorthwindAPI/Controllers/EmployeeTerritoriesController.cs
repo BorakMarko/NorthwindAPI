@@ -28,8 +28,8 @@ namespace NorthwindAPI.Controllers
         }
 
         // GET: api/EmployeeTerritories/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeTerritory>> GetEmployeeTerritory(int id)
+        [HttpGet("{id}/{territoryId}")]
+        public async Task<ActionResult<EmployeeTerritory>> GetEmployeeTerritory(int id,string territoryId)
         {
             var employeeTerritory = await _context.EmployeeTerritories.FindAsync(id);
 
@@ -43,8 +43,8 @@ namespace NorthwindAPI.Controllers
 
         // PUT: api/EmployeeTerritories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployeeTerritory(int id, EmployeeTerritory employeeTerritory)
+        [HttpPut("{id}/{territoryId}")]
+        public async Task<IActionResult> PutEmployeeTerritory(int id,string territoryId, EmployeeTerritory employeeTerritory)
         {
             if (id != employeeTerritory.EmployeeId)
             {
@@ -98,8 +98,8 @@ namespace NorthwindAPI.Controllers
         }
 
         // DELETE: api/EmployeeTerritories/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployeeTerritory(int id)
+        [HttpDelete("{id}/{territoryId}")]
+        public async Task<IActionResult> DeleteEmployeeTerritory(int id,string territoryId)
         {
             var employeeTerritory = await _context.EmployeeTerritories.FindAsync(id);
             if (employeeTerritory == null)
@@ -113,9 +113,9 @@ namespace NorthwindAPI.Controllers
             return NoContent();
         }
 
-        private bool EmployeeTerritoryExists(int id)
+        private bool EmployeeTerritoryExists(int id,string territoryId)
         {
-            return _context.EmployeeTerritories.Any(e => e.EmployeeId == id);
+            return _context.EmployeeTerritories.Any(e => e.EmployeeId == id && e.territoryId==territoryId);
         }
     }
 }
